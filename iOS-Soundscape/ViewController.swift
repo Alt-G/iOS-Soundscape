@@ -19,6 +19,19 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    
+    @IBAction func handlePan(recognizer: UIPanGestureRecognizer) {
+        // retrieves the amount the user has moved their finger
+        let translation = recognizer.translationInView(self.view)
+        // If view is being touched within its bounds
+        if let view = recognizer.view {
+            // move the center of the "view" the same amount as the finger has been dragged
+            view.center = CGPoint(x: view.center.x + translation.x,
+            y: view.center.y + translation.y)
+        }
+        recognizer.setTranslation(CGPointZero, inView: self.view)
+    }
 
 
 }
