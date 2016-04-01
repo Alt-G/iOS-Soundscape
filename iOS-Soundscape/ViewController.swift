@@ -9,9 +9,13 @@
 import UIKit
 
 class ViewController: UIViewController {
+    
+    @IBOutlet var playback: oalPlayback!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        let trans = CATransform3DMakeTranslation(view.frame.size.width / 2.0, view.frame.size.height / 2.0, 0.0)
+        view.layer.sublayerTransform = trans
         // Do any additional setup after loading the view, typically from a nib.
     }
 

@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D15532EB1CAE019500720173 /* oalPlayback.swift in Sources */ = {isa = PBXBuildFile; fileRef = D15532EA1CAE019500720173 /* oalPlayback.swift */; };
+		D15532ED1CAE01D700720173 /* MyOpenALSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = D15532EC1CAE01D700720173 /* MyOpenALSupport.swift */; };
+		D15532EF1CAE028200720173 /* NumTypes+Conversion.swift in Sources */ = {isa = PBXBuildFile; fileRef = D15532EE1CAE028200720173 /* NumTypes+Conversion.swift */; };
 		D1D72B9C1C7D2E4E000C1FB4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D72B9B1C7D2E4E000C1FB4 /* AppDelegate.swift */; };
 		D1D72B9E1C7D2E4E000C1FB4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D72B9D1C7D2E4E000C1FB4 /* ViewController.swift */; };
 		D1D72BA11C7D2E4E000C1FB4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D1D72B9F1C7D2E4E000C1FB4 /* Main.storyboard */; };
@@ -15,6 +18,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D15532EA1CAE019500720173 /* oalPlayback.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = oalPlayback.swift; sourceTree = "<group>"; };
+		D15532EC1CAE01D700720173 /* MyOpenALSupport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyOpenALSupport.swift; sourceTree = "<group>"; };
+		D15532EE1CAE028200720173 /* NumTypes+Conversion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NumTypes+Conversion.swift"; sourceTree = "<group>"; };
 		D1D72B981C7D2E4E000C1FB4 /* iOS-Soundscape.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "iOS-Soundscape.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D1D72B9B1C7D2E4E000C1FB4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D1D72B9D1C7D2E4E000C1FB4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -60,6 +66,9 @@
 				D1D72BA21C7D2E4E000C1FB4 /* Assets.xcassets */,
 				D1D72BA41C7D2E4E000C1FB4 /* LaunchScreen.storyboard */,
 				D1D72BA71C7D2E4E000C1FB4 /* Info.plist */,
+				D15532EA1CAE019500720173 /* oalPlayback.swift */,
+				D15532EC1CAE01D700720173 /* MyOpenALSupport.swift */,
+				D15532EE1CAE028200720173 /* NumTypes+Conversion.swift */,
 			);
 			path = "iOS-Soundscape";
 			sourceTree = "<group>";
@@ -135,7 +144,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D15532EB1CAE019500720173 /* oalPlayback.swift in Sources */,
+				D15532EF1CAE028200720173 /* NumTypes+Conversion.swift in Sources */,
 				D1D72B9E1C7D2E4E000C1FB4 /* ViewController.swift in Sources */,
+				D15532ED1CAE01D700720173 /* MyOpenALSupport.swift in Sources */,
 				D1D72B9C1C7D2E4E000C1FB4 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -286,6 +298,7 @@
 				D1D72BAC1C7D2E4E000C1FB4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
