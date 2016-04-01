@@ -17,15 +17,21 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="banana" translatesAutoresizingMaskIntoConstraints="NO" id="t4m-KE-dYb">
-                                <rect key="frame" x="201" y="150" width="57" height="54"/>
-                            </imageView>
                             <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="monkey" translatesAutoresizingMaskIntoConstraints="NO" id="iil-eD-UqW">
                                 <rect key="frame" x="58" y="96" width="78" height="63"/>
                                 <gestureRecognizers/>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="b4z-hK-NjP" appends="YES" id="ajy-ux-m16"/>
                                 </connections>
+                            </imageView>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GyZ-Sq-BcA">
+                                <rect key="frame" x="0.0" y="0.0" width="51" height="31"/>
+                                <connections>
+                                    <action selector="toggleMusic:" destination="BYZ-38-t0r" eventType="valueChanged" id="l36-nB-6Qf"/>
+                                </connections>
+                            </switch>
+                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="banana" translatesAutoresizingMaskIntoConstraints="NO" id="t4m-KE-dYb">
+                                <rect key="frame" x="57" y="0.0" width="57" height="54"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
