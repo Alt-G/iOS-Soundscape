@@ -7,11 +7,30 @@
 //
 
 import UIKit
+import QuartzCore
 
 class ViewController: UIViewController {
-
+    var myPlay = oalPlayback();
+    @IBOutlet weak var playback: oalPlayback!
+    @IBOutlet var musicSwitch: UISwitch!
+    
+    @IBAction func toggleMusic(sender: UISwitch) {
+        NSLog("toggling music %@", sender.on ? "on" : "off")
+        
+        if myPlay.bgPlayer != nil {
+            
+            if sender.on {
+                myPlay.bgPlayer?.play()
+            } else {
+                myPlay.bgPlayer?.stop()
+            }
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        let trans = CATransform3DMakeTranslation(view.frame.size.width / 2.0, view.frame.size.height / 2.0, 0.0)
+        view.layer.sublayerTransform = trans
         // Do any additional setup after loading the view, typically from a nib.
     }
 
