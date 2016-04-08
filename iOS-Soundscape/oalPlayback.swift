@@ -134,7 +134,7 @@ class oalPlayback: NSObject {
     override init() {
         super.init()
         // Start with our sound source slightly in front of the listener
-        self._sourcePos = CGPointMake(0.0, -70.0)
+        self._sourcePos = CGPointMake(-30.0, -30.0)
         
         // Put the listener in the center of the stage
         self._listenerPos = CGPointMake(0.0, 0.0)
