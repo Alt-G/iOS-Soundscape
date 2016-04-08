@@ -17,9 +17,7 @@
 		D163F1CC1CB8433C00CF1D5C /* rain_thunder.caf in Resources */ = {isa = PBXBuildFile; fileRef = D163F1CA1CB8433C00CF1D5C /* rain_thunder.caf */; };
 		D1D72B9C1C7D2E4E000C1FB4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D72B9B1C7D2E4E000C1FB4 /* AppDelegate.swift */; };
 		D1D72B9E1C7D2E4E000C1FB4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D72B9D1C7D2E4E000C1FB4 /* ViewController.swift */; };
-		D1D72BA11C7D2E4E000C1FB4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D1D72B9F1C7D2E4E000C1FB4 /* Main.storyboard */; };
 		D1D72BA31C7D2E4E000C1FB4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D1D72BA21C7D2E4E000C1FB4 /* Assets.xcassets */; };
-		D1D72BA61C7D2E4E000C1FB4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D1D72BA41C7D2E4E000C1FB4 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,9 +32,7 @@
 		D1D72B981C7D2E4E000C1FB4 /* iOS-Soundscape.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "iOS-Soundscape.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D1D72B9B1C7D2E4E000C1FB4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D1D72B9D1C7D2E4E000C1FB4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		D1D72BA01C7D2E4E000C1FB4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D1D72BA21C7D2E4E000C1FB4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		D1D72BA51C7D2E4E000C1FB4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D1D72BA71C7D2E4E000C1FB4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -93,9 +89,7 @@
 			children = (
 				D1D72B9B1C7D2E4E000C1FB4 /* AppDelegate.swift */,
 				D1D72B9D1C7D2E4E000C1FB4 /* ViewController.swift */,
-				D1D72B9F1C7D2E4E000C1FB4 /* Main.storyboard */,
 				D1D72BA21C7D2E4E000C1FB4 /* Assets.xcassets */,
-				D1D72BA41C7D2E4E000C1FB4 /* LaunchScreen.storyboard */,
 				D1D72BA71C7D2E4E000C1FB4 /* Info.plist */,
 				D15532EA1CAE019500720173 /* oalPlayback.swift */,
 				D15532EC1CAE01D700720173 /* MyOpenALSupport.swift */,
@@ -166,10 +160,8 @@
 				D163F1CC1CB8433C00CF1D5C /* rain_thunder.caf in Resources */,
 				D149E05B1CB84BB0002DDE93 /* jungle_birds.png in Resources */,
 				D163F1CB1CB8433C00CF1D5C /* jungle_birds.caf in Resources */,
-				D1D72BA61C7D2E4E000C1FB4 /* LaunchScreen.storyboard in Resources */,
 				D1D72BA31C7D2E4E000C1FB4 /* Assets.xcassets in Resources */,
 				D149E05C1CB84BB0002DDE93 /* rain_thunder.png in Resources */,
-				D1D72BA11C7D2E4E000C1FB4 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -189,25 +181,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		D1D72B9F1C7D2E4E000C1FB4 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				D1D72BA01C7D2E4E000C1FB4 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		D1D72BA41C7D2E4E000C1FB4 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				D1D72BA51C7D2E4E000C1FB4 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		D1D72BA81C7D2E4E000C1FB4 /* Debug */ = {

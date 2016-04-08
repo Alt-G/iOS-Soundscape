@@ -3,14 +3,15 @@
 
 import UIKit
 
-class ViewController: UIViewController, UIGestureRecognizerDelegate {
+class ViewController: UIViewController {
     
     // Init Multi Playback OpenAL Object
     var player = oalPlayback_MultiTest();
     
-    // Load View
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func loadView() {
+        
+        // Set Default View
+        self.view = UIView()
         
         // Create Gestures
         let panner = UIPanGestureRecognizer(target: self, action: "handlePan:")
@@ -34,6 +35,12 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
         imgView.addGestureRecognizer(tapGestureRecognizer)
         view.addSubview(imgView)
         player.listenerPos = imgView.center
+
+    }
+    
+    // Load View
+    override func viewDidLoad() {
+        super.viewDidLoad()
         player.startSound()
         
     }
