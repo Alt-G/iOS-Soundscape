@@ -8,147 +8,35 @@ typealias ALCdevice = COpaquePointer
 
 let kDefaultDistance: Float = 25.0
 
-@objc(oalPlayback)
-class oalPlayback: NSObject {
-    @IBOutlet var musicSwitch: UISwitch!
+@objc(oalPlayback_MultiTest)
+class oalPlayback_MultiTest: NSObject {
     
-    var source: ALuint = 0
-    var buffer: ALuint = 0
+    var sources = [ALuint](count: 2, repeatedValue: 0);
+    var buffers = [ALuint](count: 2, repeatedValue: 0);
     var context: ALCcontext = nil
     var device: ALCdevice = nil
     
     var data: UnsafeMutablePointer<Void> = nil
+    var data2: UnsafeMutablePointer<Void> = nil
     var sourceVolume: ALfloat = 0
     // Whether the sound is playing or stopped
     dynamic var isPlaying: Bool = false
     // Whether playback was interrupted by the system
     var wasInterrupted: Bool = false
-    
-    var bgURL: NSURL!
-    var bgPlayer: AVAudioPlayer?
-    // Whether the iPod is playing
     var iPodIsPlaying: Bool = false
-    
-    
-    //MARK: AVAudioSession
-    func handleInterruption(notification: NSNotification) {
-        let theInterruptionType = notification.userInfo![AVAudioSessionInterruptionTypeKey] as? UInt ?? 0
-        
-        NSLog("Session interrupted > --- %s ---\n", theInterruptionType == AVAudioSessionInterruptionType.Began.rawValue ? "Begin Interruption" : "End Interruption")
-        
-        if theInterruptionType == AVAudioSessionInterruptionType.Began.rawValue {
-            alcMakeContextCurrent(nil)
-            if self.isPlaying {
-                self.wasInterrupted = true
-            }
-        } else if theInterruptionType == AVAudioSessionInterruptionType.Ended.rawValue {
-            // make sure to activate the session
-            do {
-                try AVAudioSession.sharedInstance().setActive(true)
-            } catch let error as NSError {
-                NSLog("Error setting session active! %@\n", error.localizedDescription)
-            }
-            
-            alcMakeContextCurrent(self.context)
-            
-            if self.wasInterrupted {
-                self.startSound()
-                self.wasInterrupted = false
-            }
-        }
-    }
-    
-    //MARK: -Audio Session Route Change Notification
-    
-    func handleRouteChange(notification: NSNotification) {
-        let reasonValue = notification.userInfo![AVAudioSessionRouteChangeReasonKey] as? UInt ?? 0
-        
-        NSLog("Route change:")
-        switch reasonValue {
-        case AVAudioSessionRouteChangeReason.NewDeviceAvailable.rawValue:
-            NSLog("     NewDeviceAvailable")
-        case AVAudioSessionRouteChangeReason.OldDeviceUnavailable.rawValue:
-            NSLog("     OldDeviceUnavailable")
-        case AVAudioSessionRouteChangeReason.CategoryChange.rawValue:
-            NSLog("     CategoryChange")
-            NSLog(" New Category: %@", AVAudioSession.sharedInstance().category)
-        case AVAudioSessionRouteChangeReason.Override.rawValue:
-            NSLog("     Override")
-        case AVAudioSessionRouteChangeReason.WakeFromSleep.rawValue:
-            NSLog("     WakeFromSleep")
-        case AVAudioSessionRouteChangeReason.NoSuitableRouteForCategory.rawValue:
-            NSLog("     NoSuitableRouteForCategory")
-        case AVAudioSessionRouteChangeReason.RouteConfigurationChange.rawValue:
-            NSLog("     RouteConfigurationChange")
-        default:
-            NSLog("     ReasonUnknown")
-        }
-        
-        if let routeDescription = notification.userInfo![AVAudioSessionRouteChangePreviousRouteKey] as? AVAudioSessionRouteDescription {
-            NSLog("Previous route:\n")
-            NSLog("%@", routeDescription)
-        }
-    }
-    
-    func initAVAudioSession() {
-        // Configure the audio session
-        let sessionInstance = AVAudioSession.sharedInstance()
-        
-        // set the session category
-        iPodIsPlaying = sessionInstance.otherAudioPlaying
-        let category = iPodIsPlaying ? AVAudioSessionCategoryAmbient : AVAudioSessionCategorySoloAmbient
-        do {
-            try sessionInstance.setCategory(category)
-        } catch let error as NSError {
-            NSLog("Error setting AVAudioSession category! %@\n", error.localizedDescription)
-        }
-        
-        let hwSampleRate = 44100.0
-        do {
-            try sessionInstance.setPreferredSampleRate(hwSampleRate)
-        } catch let error as NSError {
-            NSLog("Error setting preferred sample rate! %@\n", error.localizedDescription)
-        }
-        
-        // add interruption handler
-        NSNotificationCenter.defaultCenter().addObserver(self,
-            selector: "handleInterruption:",
-            name: AVAudioSessionInterruptionNotification,
-            object: sessionInstance)
-        
-        // we don't do anything special in the route change notification
-        NSNotificationCenter.defaultCenter().addObserver(self,
-            selector: "handleRouteChange:",
-            name: AVAudioSessionRouteChangeNotification,
-            object: sessionInstance)
-        
-        // activate the audio session
-        do {
-            try sessionInstance.setActive(true)
-        } catch let error as NSError {
-            NSLog("Error setting session active! %@\n", error.localizedDescription)
-        }
-    }
     
     //MARK: Object Init / Maintenance
     override init() {
         super.init()
         // Start with our sound source slightly in front of the listener
-        self._sourcePos = CGPointMake(-30.0, -30.0)
+        self._sourcePos = CGPointMake(0, 0)
+        self._sourcePos2 = CGPointMake(400, 700)
         
         // Put the listener in the center of the stage
         self._listenerPos = CGPointMake(0.0, 0.0)
         
         // Listener looking straight ahead
         self._listenerRotation = 0.0
-        
-        // Setup AVAudioSession
-        self.initAVAudioSession()
-        
-        bgURL = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("background", ofType: "m4a")!)
-        do {
-            bgPlayer = try AVAudioPlayer(contentsOfURL: bgURL)
-        } catch _ {}
         
         wasInterrupted = false
         
@@ -157,33 +45,8 @@ class oalPlayback: NSObject {
         
     }
     
-    func checkForMusic() {
-        if iPodIsPlaying {
-            //the iPod is playing, so we should disable the background music switch
-            NSLog("Disabling background music, iPod is active")
-            musicSwitch.enabled = false
-        } else {
-            musicSwitch.enabled = true
-        }
-    }
-    
     deinit {
         self.teardownOpenAL()
-    }
-    
-    //MARK: AVAudioPlayer
-    
-    @IBAction func toggleMusic(sender: UISwitch) {
-        NSLog("toggling music %@", sender.on ? "on" : "off")
-        
-        if bgPlayer != nil {
-            
-            if sender.on {
-                bgPlayer?.play()
-            } else {
-                bgPlayer?.stop()
-            }
-        }
     }
     
     //MARK: OpenAL
@@ -193,13 +56,20 @@ class oalPlayback: NSObject {
         var size: ALsizei = 0
         var freq: ALsizei = 0
         
+        var format2: ALenum = 0
+        var size2: ALsizei = 0
+        var freq2: ALsizei = 0
+        
         let bundle = NSBundle.mainBundle()
         
         // get some audio data from a wave file
-        let fileURL = NSURL(fileURLWithPath: bundle.pathForResource("sound", ofType: "caf")!)
+        let fileURL = NSURL(fileURLWithPath: bundle.pathForResource("rain_thunder", ofType: "caf")!)
+        
+        let fileURL2 = NSURL(fileURLWithPath: bundle.pathForResource("jungle_birds", ofType: "caf")!)
         
         //        if fileURL != nil {
         data = MyGetOpenALAudioData(fileURL, &size, &format, &freq)
+        data2 = MyGetOpenALAudioData(fileURL2, &size2, &format2, &freq2)
         
         var error = alGetError()
         if error != AL_NO_ERROR {
@@ -207,8 +77,10 @@ class oalPlayback: NSObject {
         }
         
         // use the static buffer data API
-        alBufferData(buffer, format, data, size, freq)
+        alBufferData(buffers[0], format, data, size, freq)
+        alBufferData(buffers[1], format2, data2, size2, freq2)
         MyFreeOpenALAudioData(data, size)
+        MyFreeOpenALAudioData(data2, size2)
         
         error = alGetError()
         if error != AL_NO_ERROR {
@@ -223,18 +95,28 @@ class oalPlayback: NSObject {
         var error: ALenum = AL_NO_ERROR
         alGetError() // Clear the error
         
-        // Turn Looping ON
-        alSourcei(source, AL_LOOPING, AL_TRUE)
         
-        // Set Source Position
-        let sourcePosAL: [Float] = [Float(sourcePos.x), kDefaultDistance, Float(sourcePos.y)]
-        alSourcefv(source, AL_POSITION, sourcePosAL)
-        
-        // Set Source Reference Distance
-        alSourcef(source, AL_REFERENCE_DISTANCE, 50.0)
-        
-        // attach OpenAL Buffer to OpenAL Source
-        alSourcei(source, AL_BUFFER, ALint(buffer))
+        for i in 0...1 {
+            // Turn Looping ON
+            alSourcei(sources[i], AL_LOOPING, AL_TRUE)
+            
+            // Set Source Position
+            if i == 0 {
+                let sourcePosAL: [Float] = [Float(sourcePos.x), kDefaultDistance, Float(sourcePos.y)]
+                alSourcefv(sources[i], AL_POSITION, sourcePosAL)
+            }
+            
+            if i == 1 {
+                let sourcePosAL2: [Float] = [Float(sourcePos2.x), kDefaultDistance, Float(sourcePos2.y)]
+                alSourcefv(sources[i], AL_POSITION, sourcePosAL2)
+            }
+            
+            // Set Source Reference Distance
+            alSourcef(sources[i], AL_REFERENCE_DISTANCE, 50.0)
+            
+            // attach OpenAL Buffer to OpenAL Source
+            alSourcei(sources[i], AL_BUFFER, ALint(buffers[i]))
+        }
         
         error = alGetError()
         if error != AL_NO_ERROR {
@@ -258,14 +140,14 @@ class oalPlayback: NSObject {
                 alcMakeContextCurrent(context)
                 
                 // Create some OpenAL Buffer Objects
-                alGenBuffers(1, &buffer)
+                alGenBuffers(2, &buffers)
                 error = alGetError()
                 if error != AL_NO_ERROR {
                     fatalError("Error Generating Buffers: \(error)")
                 }
                 
                 // Create some OpenAL Source Objects
-                alGenSources(1, &source)
+                alGenSources(2, &sources)
                 if alGetError() != AL_NO_ERROR {
                     fatalError("Error generating sources! \(error)\n")
                 }
@@ -281,9 +163,9 @@ class oalPlayback: NSObject {
     
     func teardownOpenAL() {
         // Delete the Sources
-        alDeleteSources(1, &source)
+        alDeleteSources(2, &sources)
         // Delete the Buffers
-        alDeleteBuffers(1, &buffer)
+        alDeleteBuffers(2, &buffers)
         
         //Release context
         alcDestroyContext(context)
@@ -298,7 +180,8 @@ class oalPlayback: NSObject {
         
         NSLog("Start!\n")
         // Begin playing our source file
-        alSourcePlay(source)
+        alSourcePlay(sources[0])
+        alSourcePlay(sources[1])
         error = alGetError()
         if error != AL_NO_ERROR {
             NSLog("error starting source: %x\n", error)
@@ -313,7 +196,8 @@ class oalPlayback: NSObject {
         
         NSLog("Stop!!\n")
         // Stop playing our source file
-        alSourceStop(source)
+        alSourceStop(sources[0])
+        alSourceStop(sources[1])
         error = alGetError()
         if error != AL_NO_ERROR {
             NSLog("error stopping source: %x\n", error)
@@ -321,10 +205,6 @@ class oalPlayback: NSObject {
             // Mark our state as not playing (the view looks at this)
             self.isPlaying = false
         }
-    }
-    
-    func doSOMETHING(){
-        print("OKAY!")
     }
     
     //MARK: Setters / Getters
@@ -340,11 +220,23 @@ class oalPlayback: NSObject {
             self._sourcePos = SOURCEPOS
             let sourcePosAL: [Float] = [Float(self._sourcePos.x), kDefaultDistance, Float(self._sourcePos.y)]
             // Move our audio source coordinates
-            alSourcefv(source, AL_POSITION, sourcePosAL)
+            alSourcefv(sources[0], AL_POSITION, sourcePosAL)
         }
     }
     
-    
+    private var _sourcePos2: CGPoint = CGPoint()
+    dynamic var sourcePos2: CGPoint {
+        get {
+            return self._sourcePos2
+        }
+        
+        set(SOURCEPOS2) {
+            self._sourcePos = SOURCEPOS2
+            let sourcePosAL2: [Float] = [Float(self._sourcePos2.x), kDefaultDistance, Float(self._sourcePos2.y)]
+            // Move our audio source coordinates
+            alSourcefv(sources[1], AL_POSITION, sourcePosAL2)
+        }
+    }
     
     // The coordinates of the listener
     private var _listenerPos: CGPoint = CGPoint()
