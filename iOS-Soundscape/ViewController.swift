@@ -33,6 +33,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
         imgView.addGestureRecognizer(panner)
         imgView.addGestureRecognizer(tapGestureRecognizer)
         view.addSubview(imgView)
+        player.listenerPos = imgView.center
         player.startSound()
         
     }
