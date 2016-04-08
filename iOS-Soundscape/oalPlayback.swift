@@ -1,3 +1,6 @@
+// Multiple Source OpenAL Playback Class
+// Created By Alt-G
+
 import UIKit
 import AVFoundation
 
