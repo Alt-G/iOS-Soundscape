@@ -9,14 +9,23 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
         let panner = UIPanGestureRecognizer(target: self, action: "handlePan:")
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: "onCustomTap:")
         
+        let jungle_birds_view = UIImageView(image: UIImage(named: "jungle_birds.png"))
+        jungle_birds_view.frame = CGRect(x: 300, y:600, width: 50, height: 50)
+        view.addSubview(jungle_birds_view)
+        
+        let rain_thunder_view = UIImageView(image: UIImage(named: "rain_thunder.png"))
+        rain_thunder_view.frame = CGRect(x: 25, y: 25, width: 50, height: 50)
+        view.addSubview(rain_thunder_view)
+        
         let imgView = UIImageView(image: UIImage(named: "Headphone.png"))
-        imgView.frame = CGRect(x: 0, y: 0, width: 50, height: 50)
+        imgView.frame = CGRect(x: 150, y: 300, width: 50, height: 50)
         imgView.backgroundColor = UIColor.redColor()
         imgView.userInteractionEnabled = true
         imgView.addGestureRecognizer(panner)
         imgView.addGestureRecognizer(tapGestureRecognizer)
         view.addSubview(imgView)
         player.startSound()
+        
     }
     
     func onCustomTap(sender: UITapGestureRecognizer) {
@@ -34,6 +43,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
         sender.setTranslation(CGPointZero, inView: self.view)
         player.listenerPos = sender.view!.center
         print(sender.view!.center)
+        print(player.listenerPos)
     }
     
     //    func handlePan(recognizer: UIPanGestureRecognizer) {

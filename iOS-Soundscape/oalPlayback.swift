@@ -29,8 +29,8 @@ class oalPlayback_MultiTest: NSObject {
     override init() {
         super.init()
         // Start with our sound source slightly in front of the listener
-        self._sourcePos = CGPointMake(0, 0)
-        self._sourcePos2 = CGPointMake(400, 700)
+        self._sourcePos = CGPointMake(25, 25)
+        self._sourcePos2 = CGPointMake(350, 650)
         
         // Put the listener in the center of the stage
         self._listenerPos = CGPointMake(0.0, 0.0)
