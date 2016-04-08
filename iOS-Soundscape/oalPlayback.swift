@@ -378,4 +378,8 @@ class oalPlayback: NSObject {
             alListenerfv(AL_ORIENTATION, ori)
         }
     }
+    
+    func changeTest(xPos, _: yPos){
+        
+    }
 }
