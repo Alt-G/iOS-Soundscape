@@ -7,7 +7,7 @@ class ViewController: UIViewController {
     
     // Init Multi Playback OpenAL Object
     var player = oalPlayback_MultiTest();
-    let listener_image = UIImage(named: "Headphone.png") as UIImage?
+    let listener_image = UIImage(named: "Listener_Icon.png") as UIImage?
     let upper_left_image = UIImage(named: "rain_thunder.png") as UIImage?
     let lower_right_image = UIImage(named: "jungle_birds.png") as UIImage?
     // let view_width = UIScreen.mainScreen().bounds.size.width
@@ -43,24 +43,18 @@ class ViewController: UIViewController {
         view.addSubview(lower_right_source_icon)
         player.sourcePos2 = lower_right_source_icon.center
         
-        // Listener Button
-        let listener_button = UIButton(type: UIButtonType.Custom) as UIButton
-        listener_button.frame = CGRect(x:0,y:0, width: 50, height: 50)
-        listener_button.center = CGPointMake(UIScreen.mainScreen().bounds.size.width / 2, UIScreen.mainScreen().bounds.size.height/2)
-        listener_button.setImage(listener_image, forState: .Normal)
-        listener_button.addGestureRecognizer(panner)
-        view.addSubview(listener_button)
-        player.listenerPos = listener_button.center
-        
         // Add Moveable Icon For Listener Attachment
-        //        let imgView = UIImageView(image: UIImage(named: "Headphone.png"))
-        //        imgView.frame = CGRect(x: UIScreen.mainScreen().bounds.size.width/2, y: UIScreen.mainScreen().bounds.size.height/2, width: 50, height: 50)
-        //        imgView.backgroundColor = UIColor.redColor()
-        //        imgView.userInteractionEnabled = true
-        //        imgView.addGestureRecognizer(panner)
-        //        imgView.addGestureRecognizer(tapGestureRecognizer)
-        //        view.addSubview(imgView)
-        //        player.listenerPos = imgView.center
+        let listener_icon = UIImageView(image: listener_image)
+        listener_icon.frame = CGRect(x: 0, y: 0, width: 50, height: 50)
+        listener_icon.center = CGPointMake(
+            UIScreen.mainScreen().bounds.size.width / 2,
+            UIScreen.mainScreen().bounds.size.height / 2
+        )
+        listener_icon.userInteractionEnabled = true
+        listener_icon.addGestureRecognizer(panner)
+        listener_icon.addGestureRecognizer(tapper)
+        view.addSubview(listener_icon)
+        player.listenerPos = listener_icon.center
     }
     
     // Load View
