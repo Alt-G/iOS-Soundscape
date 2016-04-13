@@ -10,6 +10,7 @@ class ViewController: UIViewController {
     let listener_image = UIImage(named: "Listener_Icon.png") as UIImage?
     let upper_left_image = UIImage(named: "rain_thunder.png") as UIImage?
     let lower_right_image = UIImage(named: "jungle_birds.png") as UIImage?
+    let upper_right_image = UIImage(named: "test.png") as UIImage?
     // let view_width = UIScreen.mainScreen().bounds.size.width
     // let view_height = UIScreen.mainScreen().bounds.size.height
     
@@ -21,18 +22,23 @@ class ViewController: UIViewController {
         // Create Gestures
         let panner = UIPanGestureRecognizer(target: self, action: "handlePan:")
         let tapper = UITapGestureRecognizer(target: self, action: "onCustomTap:")
+        let sourcePanner = UIPanGestureRecognizer(target: self, action: "handleSourcePan:")
         
         // Add Icons
+        
+        // Upper Left
         let upper_left_source_icon = UIImageView(image: upper_left_image)
         upper_left_source_icon.frame = CGRect(x: 0, y:0, width: 50, height: 50)
         upper_left_source_icon.center = CGPointMake(
             UIScreen.mainScreen().bounds.size.width / 4,
             UIScreen.mainScreen().bounds.size.height / 4
         )
-        upper_left_source_icon.addGestureRecognizer(tapper)
+        upper_left_source_icon.userInteractionEnabled = true
+        upper_left_source_icon.addGestureRecognizer(sourcePanner)
         view.addSubview(upper_left_source_icon)
         player.sourcePos = upper_left_source_icon.center
         
+        // Lower Right
         let lower_right_source_icon = UIImageView(image: lower_right_image)
         lower_right_source_icon.frame = CGRect(x: 0, y: 0, width: 50, height: 50)
         lower_right_source_icon.center = CGPointMake(
@@ -42,6 +48,17 @@ class ViewController: UIViewController {
         lower_right_source_icon.addGestureRecognizer(tapper)
         view.addSubview(lower_right_source_icon)
         player.sourcePos2 = lower_right_source_icon.center
+        
+        // Upper Right
+        let upper_right_source_icon = UIImageView(image: upper_right_image)
+        upper_right_source_icon.frame = CGRect(x: 250, y:250, width: 50, height: 50)
+        upper_right_source_icon.center = CGPointMake(
+            3*(UIScreen.mainScreen().bounds.size.width / 4),
+            UIScreen.mainScreen().bounds.size.height / 4
+        )
+        upper_right_source_icon.addGestureRecognizer(tapper)
+        view.addSubview(upper_right_source_icon)
+        // player.sourcePos = upper_right_source_icon.center
         
         // Add Moveable Icon For Listener Attachment
         let listener_icon = UIImageView(image: listener_image)
@@ -80,6 +97,18 @@ class ViewController: UIViewController {
         player.listenerPos = sender.view!.center
         print(sender.view!.center)
         print(player.listenerPos)
+    }
+    
+    // Source Pan Gesture
+    func handleSourcePan(sender: UIPanGestureRecognizer) {
+        //self.view.bringSubviewToFront(sender.view)
+        let translation = sender.translationInView(self.view)
+        sender.view!.center = CGPoint(x: sender.view!.center.x + translation.x,
+            y: sender.view!.center.y + translation.y)
+        sender.setTranslation(CGPointZero, inView: self.view)
+        player.sourcePos = sender.view!.center
+        print(sender.view!.center)
+        print(player.sourcePos)
     }
 
     override func didReceiveMemoryWarning() {
