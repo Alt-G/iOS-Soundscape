@@ -7,12 +7,24 @@ class ViewController: UIViewController {
     
     // Init Multi Playback OpenAL Object
     var player = oalPlayback_MultiTest();
+    // Init Listener Image
     let listener_image = UIImage(named: "Listener_Icon.png") as UIImage?
-    let upper_left_image = UIImage(named: "rain_thunder.png") as UIImage?
+    
+    // Init Source Images
+    let upper_left_image = UIImage(named: "waves.png") as UIImage?
+    let upper_right_image = UIImage(named: "rain_thunder.png") as UIImage?
+    let lower_left_image = UIImage(named: "campfire.png") as UIImage?
     let lower_right_image = UIImage(named: "jungle_birds.png") as UIImage?
-    let upper_right_image = UIImage(named: "test.png") as UIImage?
+    
+    // Attempt to Set Width Height As Variable, creates typecast error.
     // let view_width = UIScreen.mainScreen().bounds.size.width
     // let view_height = UIScreen.mainScreen().bounds.size.height
+    
+//------------------------------------------------------------------------------
+// Load View:
+//  - Creates A Self Reference to a UIView
+//  - Creates Gesture Variables, and attaches to Gesture Functions
+//  - Creates 4 Source UI Objects, and A Listener UI Object
     
     override func loadView() {
         
@@ -21,10 +33,10 @@ class ViewController: UIViewController {
         
         // Create Gestures
         let panner = UIPanGestureRecognizer(target: self, action: "handlePan:")
-        let tapper = UITapGestureRecognizer(target: self, action: "onCustomTap:")
-        let sourcePanner = UIPanGestureRecognizer(target: self, action: "handleSourcePan:")
-        
-        // Add Icons
+        let sourcePanner0 = UIPanGestureRecognizer(target: self, action: "handleSourcePan0:")
+        let sourcePanner1 = UIPanGestureRecognizer(target: self, action: "handleSourcePan1:")
+        let sourcePanner2 = UIPanGestureRecognizer(target: self, action: "handleSourcePan2:")
+        let sourcePanner3 = UIPanGestureRecognizer(target: self, action: "handleSourcePan3:")
         
         // Upper Left
         let upper_left_source_icon = UIImageView(image: upper_left_image)
@@ -34,20 +46,9 @@ class ViewController: UIViewController {
             UIScreen.mainScreen().bounds.size.height / 4
         )
         upper_left_source_icon.userInteractionEnabled = true
-        upper_left_source_icon.addGestureRecognizer(sourcePanner)
+        upper_left_source_icon.addGestureRecognizer(sourcePanner0)
         view.addSubview(upper_left_source_icon)
-        player.sourcePos = upper_left_source_icon.center
-        
-        // Lower Right
-        let lower_right_source_icon = UIImageView(image: lower_right_image)
-        lower_right_source_icon.frame = CGRect(x: 0, y: 0, width: 50, height: 50)
-        lower_right_source_icon.center = CGPointMake(
-            3*(UIScreen.mainScreen().bounds.size.width / 4),
-            3*(UIScreen.mainScreen().bounds.size.height / 4)
-        )
-        lower_right_source_icon.addGestureRecognizer(tapper)
-        view.addSubview(lower_right_source_icon)
-        player.sourcePos2 = lower_right_source_icon.center
+        player.sourcePos0 = upper_left_source_icon.center
         
         // Upper Right
         let upper_right_source_icon = UIImageView(image: upper_right_image)
@@ -56,9 +57,34 @@ class ViewController: UIViewController {
             3*(UIScreen.mainScreen().bounds.size.width / 4),
             UIScreen.mainScreen().bounds.size.height / 4
         )
-        upper_right_source_icon.addGestureRecognizer(tapper)
+        upper_right_source_icon.userInteractionEnabled = true
+        upper_right_source_icon.addGestureRecognizer(sourcePanner1)
         view.addSubview(upper_right_source_icon)
-        // player.sourcePos = upper_right_source_icon.center
+        player.sourcePos1 = upper_right_source_icon.center
+        
+        // Lower Left
+        let lower_left_source_icon = UIImageView(image: lower_left_image)
+        lower_left_source_icon.frame = CGRect(x: 0, y: 0, width: 50, height: 50)
+        lower_left_source_icon.center = CGPointMake(
+            (UIScreen.mainScreen().bounds.size.width / 4),
+            3*(UIScreen.mainScreen().bounds.size.height / 4)
+        )
+        lower_left_source_icon.userInteractionEnabled = true
+        lower_left_source_icon.addGestureRecognizer(sourcePanner2)
+        view.addSubview(lower_left_source_icon)
+        player.sourcePos2 = lower_left_source_icon.center
+        
+        // Lower Right
+        let lower_right_source_icon = UIImageView(image: lower_right_image)
+        lower_right_source_icon.frame = CGRect(x: 0, y: 0, width: 50, height: 50)
+        lower_right_source_icon.center = CGPointMake(
+            3*(UIScreen.mainScreen().bounds.size.width / 4),
+            3*(UIScreen.mainScreen().bounds.size.height / 4)
+        )
+        lower_right_source_icon.userInteractionEnabled = true
+        lower_right_source_icon.addGestureRecognizer(sourcePanner3)
+        view.addSubview(lower_right_source_icon)
+        player.sourcePos3 = lower_right_source_icon.center
         
         // Add Moveable Icon For Listener Attachment
         let listener_icon = UIImageView(image: listener_image)
@@ -69,25 +95,19 @@ class ViewController: UIViewController {
         )
         listener_icon.userInteractionEnabled = true
         listener_icon.addGestureRecognizer(panner)
-        listener_icon.addGestureRecognizer(tapper)
         view.addSubview(listener_icon)
         player.listenerPos = listener_icon.center
     }
     
-    // Load View
+//------------------------------------------------------------------------------
+    
+    // Post Load View Actions
     override func viewDidLoad() {
         super.viewDidLoad()
-        player.startSound()
-        
+        player.startSound()        
     }
     
-    // Tap Gesture For Placement Testing
-    func onCustomTap(sender: UITapGestureRecognizer) {
-        let point = sender.locationInView(view)
-        print(point)
-    }
-    
-    // Pan Gesture, attaches OpenAL player to Icon
+    // Listener Pan Gesture, attaches OpenAL player to Icon
     func handlePan(sender: UIPanGestureRecognizer) {
         //self.view.bringSubviewToFront(sender.view)
         let translation = sender.translationInView(self.view)
@@ -99,16 +119,52 @@ class ViewController: UIViewController {
         print(player.listenerPos)
     }
     
-    // Source Pan Gesture
-    func handleSourcePan(sender: UIPanGestureRecognizer) {
+    // Source[0] Pan Gesture, attaches OpenAL Source To Icon
+    func handleSourcePan0(sender: UIPanGestureRecognizer) {
         //self.view.bringSubviewToFront(sender.view)
         let translation = sender.translationInView(self.view)
         sender.view!.center = CGPoint(x: sender.view!.center.x + translation.x,
             y: sender.view!.center.y + translation.y)
         sender.setTranslation(CGPointZero, inView: self.view)
-        player.sourcePos = sender.view!.center
+        player.sourcePos0 = sender.view!.center
         print(sender.view!.center)
-        print(player.sourcePos)
+        print(player.sourcePos0)
+    }
+    
+    // Source[1] Pan Gesture, attaches OpenAL Source To Icon
+    func handleSourcePan1(sender: UIPanGestureRecognizer) {
+        //self.view.bringSubviewToFront(sender.view)
+        let translation = sender.translationInView(self.view)
+        sender.view!.center = CGPoint(x: sender.view!.center.x + translation.x,
+            y: sender.view!.center.y + translation.y)
+        sender.setTranslation(CGPointZero, inView: self.view)
+        player.sourcePos1 = sender.view!.center
+        print(sender.view!.center)
+        print(player.sourcePos1)
+    }
+    
+    // Source[2] Pan Gesture, attaches OpenAL Source To Icon
+    func handleSourcePan2(sender: UIPanGestureRecognizer) {
+        //self.view.bringSubviewToFront(sender.view)
+        let translation = sender.translationInView(self.view)
+        sender.view!.center = CGPoint(x: sender.view!.center.x + translation.x,
+            y: sender.view!.center.y + translation.y)
+        sender.setTranslation(CGPointZero, inView: self.view)
+        player.sourcePos2 = sender.view!.center
+        print(sender.view!.center)
+        print(player.sourcePos2)
+    }
+    
+    // Source[3] Pan Gesture, attaches OpenAL Source To Icon
+    func handleSourcePan3(sender: UIPanGestureRecognizer) {
+        //self.view.bringSubviewToFront(sender.view)
+        let translation = sender.translationInView(self.view)
+        sender.view!.center = CGPoint(x: sender.view!.center.x + translation.x,
+            y: sender.view!.center.y + translation.y)
+        sender.setTranslation(CGPointZero, inView: self.view)
+        player.sourcePos3 = sender.view!.center
+        print(sender.view!.center)
+        print(player.sourcePos3)
     }
 
     override func didReceiveMemoryWarning() {

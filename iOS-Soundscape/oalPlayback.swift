@@ -10,17 +10,22 @@ typealias ALCcontext = COpaquePointer
 typealias ALCdevice = COpaquePointer
 
 let kDefaultDistance: Float = 25.0
+let source_num = 4
 
 @objc(oalPlayback_MultiTest)
 class oalPlayback_MultiTest: NSObject {
     
-    var sources = [ALuint](count: 2, repeatedValue: 0);
-    var buffers = [ALuint](count: 2, repeatedValue: 0);
+    var sources = [ALuint](count: source_num, repeatedValue: 0);
+    var buffers = [ALuint](count: source_num, repeatedValue: 0);
     var context: ALCcontext = nil
     var device: ALCdevice = nil
     
-    var data: UnsafeMutablePointer<Void> = nil
+    // IMPLEMENT LIST
+    var data0: UnsafeMutablePointer<Void> = nil
+    var data1: UnsafeMutablePointer<Void> = nil
     var data2: UnsafeMutablePointer<Void> = nil
+    var data3: UnsafeMutablePointer<Void> = nil
+    
     var sourceVolume: ALfloat = 0
     // Whether the sound is playing or stopped
     dynamic var isPlaying: Bool = false
@@ -31,11 +36,13 @@ class oalPlayback_MultiTest: NSObject {
     //MARK: Object Init / Maintenance
     override init() {
         super.init()
-        // Start with our sound source slightly in front of the listener
-        self._sourcePos = CGPointMake(25, 25)
-        self._sourcePos2 = CGPointMake(350, 650)
+        // Initial Position Will Be Set By View Controller
+        self._sourcePos0 = CGPointMake(0, 0)
+        self._sourcePos1 = CGPointMake(0, 0)
+        self._sourcePos2 = CGPointMake(0, 0)
+        self._sourcePos3 = CGPointMake(0, 0)
         
-        // Put the listener in the center of the stage
+        // Initial Position Will Be Set By View Controller
         self._listenerPos = CGPointMake(0.0, 0.0)
         
         // Listener looking straight ahead
@@ -55,35 +62,59 @@ class oalPlayback_MultiTest: NSObject {
     //MARK: OpenAL
     
     private func initBuffer() {
-        var format: ALenum = 0
-        var size: ALsizei = 0
-        var freq: ALsizei = 0
+        // Get Bundle Reference (Reference to the compiled application bundle)
+        let bundle = NSBundle.mainBundle()
         
+        // IMPLEMENT LIST
+        // Source Info 0
+        var format0: ALenum = 0
+        var size0: ALsizei = 0
+        var freq0: ALsizei = 0
+        
+        // Source Info 1
+        var format1: ALenum = 0
+        var size1: ALsizei = 0
+        var freq1: ALsizei = 0
+        
+        // Source Info 2
         var format2: ALenum = 0
         var size2: ALsizei = 0
         var freq2: ALsizei = 0
         
-        let bundle = NSBundle.mainBundle()
+        // Source Info 3
+        var format3: ALenum = 0
+        var size3: ALsizei = 0
+        var freq3: ALsizei = 0
         
-        // get some audio data from a wave file
-        let fileURL = NSURL(fileURLWithPath: bundle.pathForResource("rain_thunder", ofType: "caf")!)
+        // get some audio data from a wave file (resource in bundle)
+        let fileURL0 = NSURL(fileURLWithPath: bundle.pathForResource("waves_water", ofType: "caf")!)
+        let fileURL1 = NSURL(fileURLWithPath: bundle.pathForResource("rain_thunder", ofType: "caf")!)
+        let fileURL2 = NSURL(fileURLWithPath: bundle.pathForResource("fire_crackling", ofType: "caf")!)
+        let fileURL3 = NSURL(fileURLWithPath: bundle.pathForResource("jungle_birds", ofType: "caf")!)
         
-        let fileURL2 = NSURL(fileURLWithPath: bundle.pathForResource("jungle_birds", ofType: "caf")!)
-        
-        //        if fileURL != nil {
-        data = MyGetOpenALAudioData(fileURL, &size, &format, &freq)
+        //  Use Support Function to Get File Information
+        //  Should Implement Error Check Here
+        data0 = MyGetOpenALAudioData(fileURL0, &size0, &format0, &freq0)
+        data1 = MyGetOpenALAudioData(fileURL1, &size1, &format1, &freq1)
         data2 = MyGetOpenALAudioData(fileURL2, &size2, &format2, &freq2)
+        data3 = MyGetOpenALAudioData(fileURL3, &size3, &format3, &freq3)
         
+        // Check For Errors
         var error = alGetError()
         if error != AL_NO_ERROR {
             fatalError("error loading sound: \(error)\n")
         }
         
         // use the static buffer data API
-        alBufferData(buffers[0], format, data, size, freq)
-        alBufferData(buffers[1], format2, data2, size2, freq2)
-        MyFreeOpenALAudioData(data, size)
+        alBufferData(buffers[0], format0, data0, size0, freq0)
+        alBufferData(buffers[1], format1, data1, size1, freq1)
+        alBufferData(buffers[2], format2, data2, size2, freq2)
+        alBufferData(buffers[3], format3, data3, size3, freq3)
+        
+        MyFreeOpenALAudioData(data0, size0)
+        MyFreeOpenALAudioData(data1, size1)
         MyFreeOpenALAudioData(data2, size2)
+        MyFreeOpenALAudioData(data3, size3)
         
         error = alGetError()
         if error != AL_NO_ERROR {
@@ -99,19 +130,30 @@ class oalPlayback_MultiTest: NSObject {
         alGetError() // Clear the error
         
         
-        for i in 0...1 {
+        for i in 0...(source_num - 1) {
             // Turn Looping ON
             alSourcei(sources[i], AL_LOOPING, AL_TRUE)
             
             // Set Source Position
+            // Might Be Uncessary, can set Source Position In View Controller
             if i == 0 {
-                let sourcePosAL: [Float] = [Float(sourcePos.x), kDefaultDistance, Float(sourcePos.y)]
-                alSourcefv(sources[i], AL_POSITION, sourcePosAL)
+                let sourcePosAL0: [Float] = [Float(sourcePos0.x), kDefaultDistance, Float(sourcePos0.y)]
+                alSourcefv(sources[i], AL_POSITION, sourcePosAL0)
             }
             
             if i == 1 {
+                let sourcePosAL1: [Float] = [Float(sourcePos1.x), kDefaultDistance, Float(sourcePos1.y)]
+                alSourcefv(sources[i], AL_POSITION, sourcePosAL1)
+            }
+            
+            if i == 2 {
                 let sourcePosAL2: [Float] = [Float(sourcePos2.x), kDefaultDistance, Float(sourcePos2.y)]
                 alSourcefv(sources[i], AL_POSITION, sourcePosAL2)
+            }
+            
+            if i == 3 {
+                let sourcePosAL3: [Float] = [Float(sourcePos3.x), kDefaultDistance, Float(sourcePos3.y)]
+                alSourcefv(sources[i], AL_POSITION, sourcePosAL3)
             }
             
             // Set Source Reference Distance
@@ -120,7 +162,7 @@ class oalPlayback_MultiTest: NSObject {
             // attach OpenAL Buffer to OpenAL Source
             alSourcei(sources[i], AL_BUFFER, ALint(buffers[i]))
         }
-        
+
         error = alGetError()
         if error != AL_NO_ERROR {
             fatalError("Error attaching buffer to source: \(error)\n")
@@ -143,14 +185,14 @@ class oalPlayback_MultiTest: NSObject {
                 alcMakeContextCurrent(context)
                 
                 // Create some OpenAL Buffer Objects
-                alGenBuffers(2, &buffers)
+                alGenBuffers(Int32(source_num), &buffers)
                 error = alGetError()
                 if error != AL_NO_ERROR {
                     fatalError("Error Generating Buffers: \(error)")
                 }
                 
                 // Create some OpenAL Source Objects
-                alGenSources(2, &sources)
+                alGenSources(Int32(source_num), &sources)
                 if alGetError() != AL_NO_ERROR {
                     fatalError("Error generating sources! \(error)\n")
                 }
@@ -166,9 +208,9 @@ class oalPlayback_MultiTest: NSObject {
     
     func teardownOpenAL() {
         // Delete the Sources
-        alDeleteSources(2, &sources)
+        alDeleteSources(Int32(source_num), &sources)
         // Delete the Buffers
-        alDeleteBuffers(2, &buffers)
+        alDeleteBuffers(Int32(source_num), &buffers)
         
         //Release context
         alcDestroyContext(context)
@@ -182,9 +224,12 @@ class oalPlayback_MultiTest: NSObject {
         var error: ALenum = AL_NO_ERROR
         
         NSLog("Start!\n")
+        
         // Begin playing our source file
-        alSourcePlay(sources[0])
-        alSourcePlay(sources[1])
+        for i in 0...(source_num - 1) {
+                    alSourcePlay(sources[i])
+            }
+        
         error = alGetError()
         if error != AL_NO_ERROR {
             NSLog("error starting source: %x\n", error)
@@ -199,8 +244,10 @@ class oalPlayback_MultiTest: NSObject {
         
         NSLog("Stop!!\n")
         // Stop playing our source file
-        alSourceStop(sources[0])
-        alSourceStop(sources[1])
+        for i in 0...(source_num - 1) {
+            alSourceStop(sources[i])
+        }
+        
         error = alGetError()
         if error != AL_NO_ERROR {
             NSLog("error stopping source: %x\n", error)
@@ -210,23 +257,41 @@ class oalPlayback_MultiTest: NSObject {
         }
     }
     
-    //MARK: Setters / Getters
+//------------------------------------------------------------------------------
+// Getters And Setters for Sources and Listener
+// - Should Be Converted to utilize a list implementation.
     
-    // The coordinates of the sound source
-    private var _sourcePos: CGPoint = CGPoint()
-    dynamic var sourcePos: CGPoint {
+    // Source[0]
+    private var _sourcePos0: CGPoint = CGPoint()
+    dynamic var sourcePos0: CGPoint {
         get {
-            return self._sourcePos
+            return self._sourcePos0
         }
         
-        set(SOURCEPOS) {
-            self._sourcePos = SOURCEPOS
-            let sourcePosAL: [Float] = [Float(self._sourcePos.x), kDefaultDistance, Float(self._sourcePos.y)]
+        set(SOURCEPOS0) {
+            self._sourcePos0 = SOURCEPOS0
+            let sourcePosAL0: [Float] = [Float(self._sourcePos0.x), kDefaultDistance, Float(self._sourcePos0.y)]
             // Move our audio source coordinates
-            alSourcefv(sources[0], AL_POSITION, sourcePosAL)
+            alSourcefv(sources[0], AL_POSITION, sourcePosAL0)
         }
     }
     
+    // Source[1]
+    private var _sourcePos1: CGPoint = CGPoint()
+    dynamic var sourcePos1: CGPoint {
+        get {
+            return self._sourcePos1
+        }
+        
+        set(SOURCEPOS1) {
+            self._sourcePos1 = SOURCEPOS1
+            let sourcePosAL1: [Float] = [Float(self._sourcePos1.x), kDefaultDistance, Float(self._sourcePos1.y)]
+            // Move our audio source coordinates
+            alSourcefv(sources[1], AL_POSITION, sourcePosAL1)
+        }
+    }
+    
+    // Source[2]
     private var _sourcePos2: CGPoint = CGPoint()
     dynamic var sourcePos2: CGPoint {
         get {
@@ -234,10 +299,25 @@ class oalPlayback_MultiTest: NSObject {
         }
         
         set(SOURCEPOS2) {
-            self._sourcePos = SOURCEPOS2
+            self._sourcePos2 = SOURCEPOS2
             let sourcePosAL2: [Float] = [Float(self._sourcePos2.x), kDefaultDistance, Float(self._sourcePos2.y)]
             // Move our audio source coordinates
-            alSourcefv(sources[1], AL_POSITION, sourcePosAL2)
+            alSourcefv(sources[2], AL_POSITION, sourcePosAL2)
+        }
+    }
+    
+    // Source[3]
+    private var _sourcePos3: CGPoint = CGPoint()
+    dynamic var sourcePos3: CGPoint {
+        get {
+            return self._sourcePos3
+        }
+        
+        set(SOURCEPOS3) {
+            self._sourcePos3 = SOURCEPOS3
+            let sourcePosAL3: [Float] = [Float(self._sourcePos3.x), kDefaultDistance, Float(self._sourcePos3.y)]
+            // Move our audio source coordinates
+            alSourcefv(sources[3], AL_POSITION, sourcePosAL3)
         }
     }
     
@@ -255,8 +335,6 @@ class oalPlayback_MultiTest: NSObject {
             alListenerfv(AL_POSITION, listenerPosAL)
         }
     }
-    
-    
     
     // The rotation angle of the listener in radians
     private var _listenerRotation: CGFloat = 0
