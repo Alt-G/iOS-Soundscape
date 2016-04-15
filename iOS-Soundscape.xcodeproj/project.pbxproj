@@ -7,32 +7,40 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		215345E41CAE436D00FD0723 /* cloud.png in Resources */ = {isa = PBXBuildFile; fileRef = 215345E31CAE436D00FD0723 /* cloud.png */; };
+		D149E05B1CB84BB0002DDE93 /* jungle_birds.png in Resources */ = {isa = PBXBuildFile; fileRef = D149E0591CB84BB0002DDE93 /* jungle_birds.png */; };
+		D149E05C1CB84BB0002DDE93 /* rain_thunder.png in Resources */ = {isa = PBXBuildFile; fileRef = D149E05A1CB84BB0002DDE93 /* rain_thunder.png */; };
 		D15532EB1CAE019500720173 /* oalPlayback.swift in Sources */ = {isa = PBXBuildFile; fileRef = D15532EA1CAE019500720173 /* oalPlayback.swift */; };
 		D15532ED1CAE01D700720173 /* MyOpenALSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = D15532EC1CAE01D700720173 /* MyOpenALSupport.swift */; };
 		D15532EF1CAE028200720173 /* NumTypes+Conversion.swift in Sources */ = {isa = PBXBuildFile; fileRef = D15532EE1CAE028200720173 /* NumTypes+Conversion.swift */; };
-		D15532F11CAE0F3900720173 /* background.m4a in Resources */ = {isa = PBXBuildFile; fileRef = D15532F01CAE0F3900720173 /* background.m4a */; };
-		D15532F31CAE0F5E00720173 /* sound.caf in Resources */ = {isa = PBXBuildFile; fileRef = D15532F21CAE0F5E00720173 /* sound.caf */; };
+		D163F1CB1CB8433C00CF1D5C /* jungle_birds.caf in Resources */ = {isa = PBXBuildFile; fileRef = D163F1C91CB8433C00CF1D5C /* jungle_birds.caf */; };
+		D163F1CC1CB8433C00CF1D5C /* rain_thunder.caf in Resources */ = {isa = PBXBuildFile; fileRef = D163F1CA1CB8433C00CF1D5C /* rain_thunder.caf */; };
+		D193E0951CB88D7E004894DC /* Listener_Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = D193E0941CB88D7E004894DC /* Listener_Icon.png */; };
+		D1BB85C71CC0575300466274 /* fire_crackling.caf in Resources */ = {isa = PBXBuildFile; fileRef = D1BB85C61CC0575300466274 /* fire_crackling.caf */; };
+		D1BB85CC1CC0588000466274 /* campfire.png in Resources */ = {isa = PBXBuildFile; fileRef = D1BB85CA1CC0588000466274 /* campfire.png */; };
+		D1BB85CD1CC0588000466274 /* waves.png in Resources */ = {isa = PBXBuildFile; fileRef = D1BB85CB1CC0588000466274 /* waves.png */; };
+		D1BB85CF1CC0599600466274 /* waves_water.caf in Resources */ = {isa = PBXBuildFile; fileRef = D1BB85CE1CC0599600466274 /* waves_water.caf */; };
 		D1D72B9C1C7D2E4E000C1FB4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D72B9B1C7D2E4E000C1FB4 /* AppDelegate.swift */; };
 		D1D72B9E1C7D2E4E000C1FB4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D72B9D1C7D2E4E000C1FB4 /* ViewController.swift */; };
-		D1D72BA11C7D2E4E000C1FB4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D1D72B9F1C7D2E4E000C1FB4 /* Main.storyboard */; };
 		D1D72BA31C7D2E4E000C1FB4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D1D72BA21C7D2E4E000C1FB4 /* Assets.xcassets */; };
-		D1D72BA61C7D2E4E000C1FB4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D1D72BA41C7D2E4E000C1FB4 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		215345E31CAE436D00FD0723 /* cloud.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = cloud.png; path = ../../../../Downloads/cloud.png; sourceTree = "<group>"; };
+		D149E0591CB84BB0002DDE93 /* jungle_birds.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = jungle_birds.png; sourceTree = "<group>"; };
+		D149E05A1CB84BB0002DDE93 /* rain_thunder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rain_thunder.png; sourceTree = "<group>"; };
 		D15532EA1CAE019500720173 /* oalPlayback.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = oalPlayback.swift; sourceTree = "<group>"; };
 		D15532EC1CAE01D700720173 /* MyOpenALSupport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyOpenALSupport.swift; sourceTree = "<group>"; };
 		D15532EE1CAE028200720173 /* NumTypes+Conversion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NumTypes+Conversion.swift"; sourceTree = "<group>"; };
-		D15532F01CAE0F3900720173 /* background.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = background.m4a; sourceTree = "<group>"; };
-		D15532F21CAE0F5E00720173 /* sound.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = sound.caf; path = "iOS-Soundscape/sound.caf"; sourceTree = "<group>"; };
+		D163F1C91CB8433C00CF1D5C /* jungle_birds.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = jungle_birds.caf; sourceTree = "<group>"; };
+		D163F1CA1CB8433C00CF1D5C /* rain_thunder.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = rain_thunder.caf; sourceTree = "<group>"; };
+		D193E0941CB88D7E004894DC /* Listener_Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Listener_Icon.png; sourceTree = "<group>"; };
+		D1BB85C61CC0575300466274 /* fire_crackling.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = fire_crackling.caf; sourceTree = "<group>"; };
+		D1BB85CA1CC0588000466274 /* campfire.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = campfire.png; sourceTree = "<group>"; };
+		D1BB85CB1CC0588000466274 /* waves.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = waves.png; sourceTree = "<group>"; };
+		D1BB85CE1CC0599600466274 /* waves_water.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = waves_water.caf; sourceTree = "<group>"; };
 		D1D72B981C7D2E4E000C1FB4 /* iOS-Soundscape.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "iOS-Soundscape.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D1D72B9B1C7D2E4E000C1FB4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D1D72B9D1C7D2E4E000C1FB4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		D1D72BA01C7D2E4E000C1FB4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D1D72BA21C7D2E4E000C1FB4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		D1D72BA51C7D2E4E000C1FB4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D1D72BA71C7D2E4E000C1FB4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -47,10 +55,34 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D163F1C51CB8432400CF1D5C /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				D1BB85CA1CC0588000466274 /* campfire.png */,
+				D1BB85CB1CC0588000466274 /* waves.png */,
+				D193E0941CB88D7E004894DC /* Listener_Icon.png */,
+				D149E0591CB84BB0002DDE93 /* jungle_birds.png */,
+				D149E05A1CB84BB0002DDE93 /* rain_thunder.png */,
+			);
+			path = Images;
+			sourceTree = "<group>";
+		};
+		D163F1C81CB8433C00CF1D5C /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				D1BB85CE1CC0599600466274 /* waves_water.caf */,
+				D1BB85C61CC0575300466274 /* fire_crackling.caf */,
+				D163F1C91CB8433C00CF1D5C /* jungle_birds.caf */,
+				D163F1CA1CB8433C00CF1D5C /* rain_thunder.caf */,
+			);
+			path = Sounds;
+			sourceTree = "<group>";
+		};
 		D1D72B8F1C7D2E4E000C1FB4 = {
 			isa = PBXGroup;
 			children = (
-				D15532F21CAE0F5E00720173 /* sound.caf */,
+				D163F1C81CB8433C00CF1D5C /* Sounds */,
+				D163F1C51CB8432400CF1D5C /* Images */,
 				D1D72B9A1C7D2E4E000C1FB4 /* iOS-Soundscape */,
 				D1D72B991C7D2E4E000C1FB4 /* Products */,
 			);
@@ -67,15 +99,11 @@
 		D1D72B9A1C7D2E4E000C1FB4 /* iOS-Soundscape */ = {
 			isa = PBXGroup;
 			children = (
-				D15532F01CAE0F3900720173 /* background.m4a */,
 				D1D72B9B1C7D2E4E000C1FB4 /* AppDelegate.swift */,
 				D1D72B9D1C7D2E4E000C1FB4 /* ViewController.swift */,
-				D1D72B9F1C7D2E4E000C1FB4 /* Main.storyboard */,
 				D1D72BA21C7D2E4E000C1FB4 /* Assets.xcassets */,
-				D1D72BA41C7D2E4E000C1FB4 /* LaunchScreen.storyboard */,
 				D1D72BA71C7D2E4E000C1FB4 /* Info.plist */,
 				D15532EA1CAE019500720173 /* oalPlayback.swift */,
-				215345E31CAE436D00FD0723 /* cloud.png */,
 				D15532EC1CAE01D700720173 /* MyOpenALSupport.swift */,
 				D15532EE1CAE028200720173 /* NumTypes+Conversion.swift */,
 			);
@@ -140,12 +168,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D1D72BA61C7D2E4E000C1FB4 /* LaunchScreen.storyboard in Resources */,
+				D193E0951CB88D7E004894DC /* Listener_Icon.png in Resources */,
+				D163F1CC1CB8433C00CF1D5C /* rain_thunder.caf in Resources */,
+				D1BB85CD1CC0588000466274 /* waves.png in Resources */,
+				D1BB85CF1CC0599600466274 /* waves_water.caf in Resources */,
+				D149E05B1CB84BB0002DDE93 /* jungle_birds.png in Resources */,
+				D163F1CB1CB8433C00CF1D5C /* jungle_birds.caf in Resources */,
+				D1BB85C71CC0575300466274 /* fire_crackling.caf in Resources */,
 				D1D72BA31C7D2E4E000C1FB4 /* Assets.xcassets in Resources */,
-				D15532F31CAE0F5E00720173 /* sound.caf in Resources */,
-				215345E41CAE436D00FD0723 /* cloud.png in Resources */,
-				D15532F11CAE0F3900720173 /* background.m4a in Resources */,
-				D1D72BA11C7D2E4E000C1FB4 /* Main.storyboard in Resources */,
+				D1BB85CC1CC0588000466274 /* campfire.png in Resources */,
+				D149E05C1CB84BB0002DDE93 /* rain_thunder.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -165,25 +197,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		D1D72B9F1C7D2E4E000C1FB4 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				D1D72BA01C7D2E4E000C1FB4 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		D1D72BA41C7D2E4E000C1FB4 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				D1D72BA51C7D2E4E000C1FB4 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		D1D72BA81C7D2E4E000C1FB4 /* Debug */ = {
