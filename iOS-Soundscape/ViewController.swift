@@ -8,13 +8,15 @@ class ViewController: UIViewController {
     // Init Multi Playback OpenAL Object
     var player = oalPlayback_MultiTest();
     // Init Listener Image
-    let listener_image = UIImage(named: "Listener_Icon.png") as UIImage?
+    let listener_image = UIImage(named: "feet.png") as UIImage?
     
     // Init Source Images
-    let upper_left_image = UIImage(named: "waves.png") as UIImage?
-    let upper_right_image = UIImage(named: "rain_thunder.png") as UIImage?
+    let upper_left_image = UIImage(named: "canteen.png") as UIImage?
+    let upper_right_image = UIImage(named: "hatchet.png") as UIImage?
     let lower_left_image = UIImage(named: "campfire.png") as UIImage?
-    let lower_right_image = UIImage(named: "jungle_birds.png") as UIImage?
+    let lower_right_image = UIImage(named: "bear claw.png") as UIImage?
+    //instatiate background colors
+    //let colors = Colors()
     
     // Attempt to Set Width Height As Variable, creates typecast error.
     // let view_width = UIScreen.mainScreen().bounds.size.width
@@ -26,10 +28,13 @@ class ViewController: UIViewController {
 //  - Creates Gesture Variables, and attaches to Gesture Functions
 //  - Creates 4 Source UI Objects, and A Listener UI Object
     
+    
     override func loadView() {
         
         // Set Default View
         self.view = UIView()
+        
+
         
         // Create Gestures
         let panner = UIPanGestureRecognizer(target: self, action: "handlePan:")
@@ -42,8 +47,8 @@ class ViewController: UIViewController {
         let upper_left_source_icon = UIImageView(image: upper_left_image)
         upper_left_source_icon.frame = CGRect(x: 0, y:0, width: 50, height: 50)
         upper_left_source_icon.center = CGPointMake(
-            UIScreen.mainScreen().bounds.size.width / 4,
-            UIScreen.mainScreen().bounds.size.height / 4
+            UIScreen.mainScreen().bounds.size.width / 8,
+            UIScreen.mainScreen().bounds.size.height / 8
         )
         upper_left_source_icon.userInteractionEnabled = true
         upper_left_source_icon.addGestureRecognizer(sourcePanner0)
@@ -103,8 +108,10 @@ class ViewController: UIViewController {
     
     // Post Load View Actions
     override func viewDidLoad() {
+        //refresh()
         super.viewDidLoad()
-        player.startSound()        
+        player.startSound()
+        
     }
     
     // Listener Pan Gesture, attaches OpenAL player to Icon
@@ -171,4 +178,13 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+//    func refresh() {
+//        view.backgroundColor = UIColor.clearColor()
+//        let backgroundLayer = colors.gl
+//        backgroundLayer.frame = view.frame
+//        view.layer.insertSublayer(backgroundLayer, atIndex: 0)
+//    }
+//    
+    
 }
+
