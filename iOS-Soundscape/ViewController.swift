@@ -5,17 +5,23 @@ import UIKit
 
 class ViewController: UIViewController {
     
+    
+    
     // Init Multi Playback OpenAL Object
     var player = oalPlayback_MultiTest();
     // Init Listener Image
-    let listener_image = UIImage(named: "Listener_Icon.png") as UIImage?
+    let listener_image = UIImage(named: "feet.png") as UIImage?
     
     // Init Source Images
-    let upper_left_image = UIImage(named: "waves.png") as UIImage?
-    let upper_right_image = UIImage(named: "rain_thunder.png") as UIImage?
+    let upper_left_image = UIImage(named: "canteen.png") as UIImage?
+    let upper_right_image = UIImage(named: "hatchet.png") as UIImage?
     let lower_left_image = UIImage(named: "campfire.png") as UIImage?
-    let lower_right_image = UIImage(named: "jungle_birds.png") as UIImage?
-    
+    let lower_right_image = UIImage(named: "bear claw.png") as UIImage?
+    //instatiate background colors
+    //let colors = Colors()
+    var gradient : CAGradientLayer?;
+    var toColors : AnyObject?
+    var fromColors : AnyObject?
     // Attempt to Set Width Height As Variable, creates typecast error.
     // let view_width = UIScreen.mainScreen().bounds.size.width
     // let view_height = UIScreen.mainScreen().bounds.size.height
@@ -25,6 +31,7 @@ class ViewController: UIViewController {
 //  - Creates A Self Reference to a UIView
 //  - Creates Gesture Variables, and attaches to Gesture Functions
 //  - Creates 4 Source UI Objects, and A Listener UI Object
+    
     
     override func loadView() {
         
@@ -42,8 +49,8 @@ class ViewController: UIViewController {
         let upper_left_source_icon = UIImageView(image: upper_left_image)
         upper_left_source_icon.frame = CGRect(x: 0, y:0, width: 50, height: 50)
         upper_left_source_icon.center = CGPointMake(
-            UIScreen.mainScreen().bounds.size.width / 4,
-            UIScreen.mainScreen().bounds.size.height / 4
+            UIScreen.mainScreen().bounds.size.width / 8,
+            UIScreen.mainScreen().bounds.size.height / 8
         )
         upper_left_source_icon.userInteractionEnabled = true
         upper_left_source_icon.addGestureRecognizer(sourcePanner0)
@@ -103,9 +110,24 @@ class ViewController: UIViewController {
     
     // Post Load View Actions
     override func viewDidLoad() {
+       
         super.viewDidLoad()
-        player.startSound()        
+        player.startSound()
+        
+        
     }
+    // Load Gradient Color Animation
+    override func viewDidAppear(animated: Bool) {
+        
+        self.gradient = CAGradientLayer()
+        self.gradient?.frame = self.view.bounds
+        self.gradient?.colors = [UIColor.lightGrayColor().CGColor, UIColor.lightGrayColor().CGColor]
+        self.view.layer.insertSublayer(self.gradient!, atIndex: 0)
+        
+        self.toColors = [UIColor.greenColor().CGColor, UIColor.cyanColor().CGColor]
+        animateLayer()
+    }
+    
     
     // Listener Pan Gesture, attaches OpenAL player to Icon
     func handlePan(sender: UIPanGestureRecognizer) {
@@ -171,4 +193,33 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    // Color Gradient Cycle Functio
+    func animateLayer(){
+        
+        self.fromColors = self.gradient?.colors
+        self.gradient!.colors = self.toColors! as? [AnyObject] // You missed this line
+        let animation : CABasicAnimation = CABasicAnimation(keyPath: "colors")
+        animation.delegate = self
+        animation.fromValue = fromColors
+        animation.toValue = toColors
+        animation.duration = 20.00
+        animation.removedOnCompletion = true
+        animation.fillMode = kCAFillModeForwards
+        animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionLinear)
+        animation.delegate = self
+        
+        self.gradient?.addAnimation(animation, forKey:"animateGradient")
+    }
+    
+    // This creates the loop for the gradient color change
+    override func animationDidStop(anim: (CAAnimation!), finished flag: Bool) {
+        
+        self.toColors = self.fromColors;
+        self.fromColors = self.gradient?.colors
+        
+        animateLayer()
+    }
+    
 }
+

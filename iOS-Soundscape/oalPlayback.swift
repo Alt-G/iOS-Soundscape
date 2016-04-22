@@ -12,6 +12,8 @@ typealias ALCdevice = COpaquePointer
 let kDefaultDistance: Float = 25.0
 let source_num = 4
 
+
+
 @objc(oalPlayback_MultiTest)
 class oalPlayback_MultiTest: NSObject {
     
@@ -87,10 +89,10 @@ class oalPlayback_MultiTest: NSObject {
         var freq3: ALsizei = 0
         
         // get some audio data from a wave file (resource in bundle)
-        let fileURL0 = NSURL(fileURLWithPath: bundle.pathForResource("waves_water", ofType: "caf")!)
-        let fileURL1 = NSURL(fileURLWithPath: bundle.pathForResource("rain_thunder", ofType: "caf")!)
-        let fileURL2 = NSURL(fileURLWithPath: bundle.pathForResource("fire_crackling", ofType: "caf")!)
-        let fileURL3 = NSURL(fileURLWithPath: bundle.pathForResource("jungle_birds", ofType: "caf")!)
+        let fileURL0 = NSURL(fileURLWithPath: bundle.pathForResource("water1", ofType: "caf")!)
+        let fileURL1 = NSURL(fileURLWithPath: bundle.pathForResource("woodchop", ofType: "caf")!)
+        let fileURL2 = NSURL(fileURLWithPath: bundle.pathForResource("fire", ofType: "caf")!)
+        let fileURL3 = NSURL(fileURLWithPath: bundle.pathForResource("Bear", ofType: "caf")!)
         
         //  Use Support Function to Get File Information
         //  Should Implement Error Check Here

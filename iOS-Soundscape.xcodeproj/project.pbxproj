@@ -7,6 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4A34B5D61CC9539D0058A4EA /* bear claw.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A34B5D51CC9539D0058A4EA /* bear claw.png */; };
+		4A34B5D81CC954350058A4EA /* hatchet.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A34B5D71CC954350058A4EA /* hatchet.png */; };
+		4A34B5DA1CC95EA40058A4EA /* canteen.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A34B5D91CC95EA40058A4EA /* canteen.png */; };
+		4A34B5DC1CC96C0F0058A4EA /* feet.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A34B5DB1CC96C0F0058A4EA /* feet.png */; };
+		4A34B5E21CC980E50058A4EA /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A34B5E11CC980E50058A4EA /* Color.swift */; };
+		4A34B5EF1CC98BD20058A4EA /* Bear.caf in Resources */ = {isa = PBXBuildFile; fileRef = 4A34B5EB1CC98BD20058A4EA /* Bear.caf */; };
+		4A34B5F01CC98BD20058A4EA /* fire.caf in Resources */ = {isa = PBXBuildFile; fileRef = 4A34B5EC1CC98BD20058A4EA /* fire.caf */; };
+		4A34B5F11CC98BD20058A4EA /* water1.caf in Resources */ = {isa = PBXBuildFile; fileRef = 4A34B5ED1CC98BD20058A4EA /* water1.caf */; };
+		4A34B5F21CC98BD20058A4EA /* woodchop.caf in Resources */ = {isa = PBXBuildFile; fileRef = 4A34B5EE1CC98BD20058A4EA /* woodchop.caf */; };
 		D149E05B1CB84BB0002DDE93 /* jungle_birds.png in Resources */ = {isa = PBXBuildFile; fileRef = D149E0591CB84BB0002DDE93 /* jungle_birds.png */; };
 		D149E05C1CB84BB0002DDE93 /* rain_thunder.png in Resources */ = {isa = PBXBuildFile; fileRef = D149E05A1CB84BB0002DDE93 /* rain_thunder.png */; };
 		D15532EB1CAE019500720173 /* oalPlayback.swift in Sources */ = {isa = PBXBuildFile; fileRef = D15532EA1CAE019500720173 /* oalPlayback.swift */; };
@@ -25,6 +34,15 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4A34B5D51CC9539D0058A4EA /* bear claw.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bear claw.png"; sourceTree = "<group>"; };
+		4A34B5D71CC954350058A4EA /* hatchet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hatchet.png; sourceTree = "<group>"; };
+		4A34B5D91CC95EA40058A4EA /* canteen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = canteen.png; sourceTree = "<group>"; };
+		4A34B5DB1CC96C0F0058A4EA /* feet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = feet.png; sourceTree = "<group>"; };
+		4A34B5E11CC980E50058A4EA /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		4A34B5EB1CC98BD20058A4EA /* Bear.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Bear.caf; path = ../Bear.caf; sourceTree = "<group>"; };
+		4A34B5EC1CC98BD20058A4EA /* fire.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = fire.caf; path = ../fire.caf; sourceTree = "<group>"; };
+		4A34B5ED1CC98BD20058A4EA /* water1.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = water1.caf; path = ../water1.caf; sourceTree = "<group>"; };
+		4A34B5EE1CC98BD20058A4EA /* woodchop.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = woodchop.caf; path = ../woodchop.caf; sourceTree = "<group>"; };
 		D149E0591CB84BB0002DDE93 /* jungle_birds.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = jungle_birds.png; sourceTree = "<group>"; };
 		D149E05A1CB84BB0002DDE93 /* rain_thunder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rain_thunder.png; sourceTree = "<group>"; };
 		D15532EA1CAE019500720173 /* oalPlayback.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = oalPlayback.swift; sourceTree = "<group>"; };
@@ -62,6 +80,10 @@
 				D1BB85CB1CC0588000466274 /* waves.png */,
 				D193E0941CB88D7E004894DC /* Listener_Icon.png */,
 				D149E0591CB84BB0002DDE93 /* jungle_birds.png */,
+				4A34B5DB1CC96C0F0058A4EA /* feet.png */,
+				4A34B5D51CC9539D0058A4EA /* bear claw.png */,
+				4A34B5D91CC95EA40058A4EA /* canteen.png */,
+				4A34B5D71CC954350058A4EA /* hatchet.png */,
 				D149E05A1CB84BB0002DDE93 /* rain_thunder.png */,
 			);
 			path = Images;
@@ -70,6 +92,10 @@
 		D163F1C81CB8433C00CF1D5C /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
+				4A34B5EB1CC98BD20058A4EA /* Bear.caf */,
+				4A34B5EC1CC98BD20058A4EA /* fire.caf */,
+				4A34B5ED1CC98BD20058A4EA /* water1.caf */,
+				4A34B5EE1CC98BD20058A4EA /* woodchop.caf */,
 				D1BB85CE1CC0599600466274 /* waves_water.caf */,
 				D1BB85C61CC0575300466274 /* fire_crackling.caf */,
 				D163F1C91CB8433C00CF1D5C /* jungle_birds.caf */,
@@ -101,6 +127,7 @@
 			children = (
 				D1D72B9B1C7D2E4E000C1FB4 /* AppDelegate.swift */,
 				D1D72B9D1C7D2E4E000C1FB4 /* ViewController.swift */,
+				4A34B5E11CC980E50058A4EA /* Color.swift */,
 				D1D72BA21C7D2E4E000C1FB4 /* Assets.xcassets */,
 				D1D72BA71C7D2E4E000C1FB4 /* Info.plist */,
 				D15532EA1CAE019500720173 /* oalPlayback.swift */,
@@ -142,6 +169,7 @@
 				TargetAttributes = {
 					D1D72B971C7D2E4E000C1FB4 = {
 						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = FM435LD5UV;
 					};
 				};
 			};
@@ -170,14 +198,22 @@
 			files = (
 				D193E0951CB88D7E004894DC /* Listener_Icon.png in Resources */,
 				D163F1CC1CB8433C00CF1D5C /* rain_thunder.caf in Resources */,
+				4A34B5F11CC98BD20058A4EA /* water1.caf in Resources */,
+				4A34B5D61CC9539D0058A4EA /* bear claw.png in Resources */,
+				4A34B5D81CC954350058A4EA /* hatchet.png in Resources */,
+				4A34B5EF1CC98BD20058A4EA /* Bear.caf in Resources */,
 				D1BB85CD1CC0588000466274 /* waves.png in Resources */,
+				4A34B5F01CC98BD20058A4EA /* fire.caf in Resources */,
 				D1BB85CF1CC0599600466274 /* waves_water.caf in Resources */,
 				D149E05B1CB84BB0002DDE93 /* jungle_birds.png in Resources */,
+				4A34B5DA1CC95EA40058A4EA /* canteen.png in Resources */,
 				D163F1CB1CB8433C00CF1D5C /* jungle_birds.caf in Resources */,
+				4A34B5DC1CC96C0F0058A4EA /* feet.png in Resources */,
 				D1BB85C71CC0575300466274 /* fire_crackling.caf in Resources */,
 				D1D72BA31C7D2E4E000C1FB4 /* Assets.xcassets in Resources */,
 				D1BB85CC1CC0588000466274 /* campfire.png in Resources */,
 				D149E05C1CB84BB0002DDE93 /* rain_thunder.png in Resources */,
+				4A34B5F21CC98BD20058A4EA /* woodchop.caf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -193,6 +229,7 @@
 				D1D72B9E1C7D2E4E000C1FB4 /* ViewController.swift in Sources */,
 				D15532ED1CAE01D700720173 /* MyOpenALSupport.swift in Sources */,
 				D1D72B9C1C7D2E4E000C1FB4 /* AppDelegate.swift in Sources */,
+				4A34B5E21CC980E50058A4EA /* Color.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -286,10 +323,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "iOS-Soundscape/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Alt-G.iOS-Soundscape";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -297,10 +337,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "iOS-Soundscape/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Alt-G.iOS-Soundscape";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
