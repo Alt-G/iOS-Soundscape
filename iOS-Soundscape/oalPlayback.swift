@@ -36,17 +36,6 @@ class oalPlayback_MultiTest: NSObject {
     //MARK: Object Init / Maintenance
     override init() {
         super.init()
-        // Initial Position Will Be Set By View Controller
-        self._sourcePos0 = CGPointMake(0, 0)
-        self._sourcePos1 = CGPointMake(0, 0)
-        self._sourcePos2 = CGPointMake(0, 0)
-        self._sourcePos3 = CGPointMake(0, 0)
-        
-        // Initial Position Will Be Set By View Controller
-        self._listenerPos = CGPointMake(0.0, 0.0)
-        
-        // Listener looking straight ahead
-        self._listenerRotation = 0.0
         
         wasInterrupted = false
         
@@ -263,7 +252,7 @@ class oalPlayback_MultiTest: NSObject {
     
     // Source[0]
     private var _sourcePos0: CGPoint = CGPoint()
-    dynamic var sourcePos0: CGPoint {
+    var sourcePos0: CGPoint {
         get {
             return self._sourcePos0
         }
@@ -278,7 +267,7 @@ class oalPlayback_MultiTest: NSObject {
     
     // Source[1]
     private var _sourcePos1: CGPoint = CGPoint()
-    dynamic var sourcePos1: CGPoint {
+    var sourcePos1: CGPoint {
         get {
             return self._sourcePos1
         }
@@ -291,16 +280,31 @@ class oalPlayback_MultiTest: NSObject {
         }
     }
     
-    // Source[2]
-    private var _sourcePos2: CGPoint = CGPoint()
-    dynamic var sourcePos2: CGPoint {
+    // Source[2] -- Fire
+//    private var _sourcePos2: CGPoint = CGPoint()
+//    var sourcePos2: CGPoint {
+//        get {
+//            return self._sourcePos2
+//        }
+//        
+//        set(SOURCEPOS2) {
+//            self._sourcePos2 = SOURCEPOS2
+//            let sourcePosAL2: [Float] = [Float(self._sourcePos2.x), kDefaultDistance, Float(self._sourcePos2.y)]
+//            // Move our audio source coordinates
+//            alSourcefv(sources[2], AL_POSITION, sourcePosAL2)
+//        }
+//    }
+    
+    // private var _sourcePos2: CGPoint = CGPoint()
+    var sourcePos2: CGPoint {
         get {
             return self._sourcePos2
         }
         
         set(SOURCEPOS2) {
-            self._sourcePos2 = SOURCEPOS2
-            let sourcePosAL2: [Float] = [Float(self._sourcePos2.x), kDefaultDistance, Float(self._sourcePos2.y)]
+            //self._sourcePos2 = SOURCEPOS2
+            // sourcePosAL2: [Float] is a float array
+            let sourcePosAL2: [Float] = [Float(self.x), kDefaultDistance, Float(self._sourcePos2.y)]
             // Move our audio source coordinates
             alSourcefv(sources[2], AL_POSITION, sourcePosAL2)
         }
@@ -308,7 +312,7 @@ class oalPlayback_MultiTest: NSObject {
     
     // Source[3]
     private var _sourcePos3: CGPoint = CGPoint()
-    dynamic var sourcePos3: CGPoint {
+    var sourcePos3: CGPoint {
         get {
             return self._sourcePos3
         }
@@ -323,7 +327,7 @@ class oalPlayback_MultiTest: NSObject {
     
     // The coordinates of the listener
     private var _listenerPos: CGPoint = CGPoint()
-    dynamic var listenerPos: CGPoint {
+    var listenerPos: CGPoint {
         get {
             return self._listenerPos
         }
@@ -338,7 +342,7 @@ class oalPlayback_MultiTest: NSObject {
     
     // The rotation angle of the listener in radians
     private var _listenerRotation: CGFloat = 0
-    dynamic var listenerRotation: CGFloat {
+    var listenerRotation: CGFloat {
         get {
             return self._listenerRotation
         }
