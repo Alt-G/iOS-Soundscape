@@ -12,7 +12,12 @@ typealias ALCdevice = COpaquePointer
 let kDefaultDistance: Float = 25.0
 let source_num = 4
 
-
+// Configuration of Sound Files
+// - Set filenames here, files assume .caf, no extension necessary.
+let file0: String = "0_Water"
+let file1: String = "1_Chop"
+let file2: String = "2_Fire"
+let file3: String = "3_BearMedium"
 
 @objc(oalPlayback_MultiTest)
 class oalPlayback_MultiTest: NSObject {
@@ -89,10 +94,10 @@ class oalPlayback_MultiTest: NSObject {
         var freq3: ALsizei = 0
         
         // get some audio data from a wave file (resource in bundle)
-        let fileURL0 = NSURL(fileURLWithPath: bundle.pathForResource("water1", ofType: "caf")!)
-        let fileURL1 = NSURL(fileURLWithPath: bundle.pathForResource("woodchop", ofType: "caf")!)
-        let fileURL2 = NSURL(fileURLWithPath: bundle.pathForResource("fire", ofType: "caf")!)
-        let fileURL3 = NSURL(fileURLWithPath: bundle.pathForResource("Bear", ofType: "caf")!)
+        let fileURL0 = NSURL(fileURLWithPath: bundle.pathForResource(file0, ofType: "caf")!)
+        let fileURL1 = NSURL(fileURLWithPath: bundle.pathForResource(file1, ofType: "caf")!)
+        let fileURL2 = NSURL(fileURLWithPath: bundle.pathForResource(file2, ofType: "caf")!)
+        let fileURL3 = NSURL(fileURLWithPath: bundle.pathForResource(file3, ofType: "caf")!)
         
         //  Use Support Function to Get File Information
         //  Should Implement Error Check Here
@@ -158,8 +163,9 @@ class oalPlayback_MultiTest: NSObject {
                 alSourcefv(sources[i], AL_POSITION, sourcePosAL3)
             }
             
-            // Set Source Reference Distance
-            alSourcef(sources[i], AL_REFERENCE_DISTANCE, 50.0)
+            // Set Source Reference Distance & Gain
+            alSourcef(sources[i], AL_REFERENCE_DISTANCE, 50)
+            alSourcef(sources[i], AL_GAIN, 0.25)
             
             // attach OpenAL Buffer to OpenAL Source
             alSourcei(sources[i], AL_BUFFER, ALint(buffers[i]))
