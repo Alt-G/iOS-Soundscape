@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		D1190B831CCAD37D00826D4C /* listener.png in Resources */ = {isa = PBXBuildFile; fileRef = D1190B7E1CCAD37D00826D4C /* listener.png */; };
+		D1190B831CCAD37D00826D4C /* Listener.png in Resources */ = {isa = PBXBuildFile; fileRef = D1190B7E1CCAD37D00826D4C /* Listener.png */; };
 		D1190B841CCAD37D00826D4C /* Bear.png in Resources */ = {isa = PBXBuildFile; fileRef = D1190B7F1CCAD37D00826D4C /* Bear.png */; };
 		D1190B851CCAD37D00826D4C /* Fire.png in Resources */ = {isa = PBXBuildFile; fileRef = D1190B801CCAD37D00826D4C /* Fire.png */; };
 		D1190B861CCAD37D00826D4C /* Canteen.png in Resources */ = {isa = PBXBuildFile; fileRef = D1190B811CCAD37D00826D4C /* Canteen.png */; };
@@ -16,7 +16,6 @@
 		D15532EB1CAE019500720173 /* oalPlayback.swift in Sources */ = {isa = PBXBuildFile; fileRef = D15532EA1CAE019500720173 /* oalPlayback.swift */; };
 		D15532ED1CAE01D700720173 /* MyOpenALSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = D15532EC1CAE01D700720173 /* MyOpenALSupport.swift */; };
 		D15532EF1CAE028200720173 /* NumTypes+Conversion.swift in Sources */ = {isa = PBXBuildFile; fileRef = D15532EE1CAE028200720173 /* NumTypes+Conversion.swift */; };
-		D1A48C691CC9B7D7001FFDA1 /* 3_BearLow.caf in Resources */ = {isa = PBXBuildFile; fileRef = D1A48C641CC9B7D7001FFDA1 /* 3_BearLow.caf */; };
 		D1A48C6A1CC9B7D7001FFDA1 /* 3_BearMedium.caf in Resources */ = {isa = PBXBuildFile; fileRef = D1A48C651CC9B7D7001FFDA1 /* 3_BearMedium.caf */; };
 		D1A48C6B1CC9B7D7001FFDA1 /* 1_Chop.caf in Resources */ = {isa = PBXBuildFile; fileRef = D1A48C661CC9B7D7001FFDA1 /* 1_Chop.caf */; };
 		D1A48C6C1CC9B7D7001FFDA1 /* 2_Fire.caf in Resources */ = {isa = PBXBuildFile; fileRef = D1A48C671CC9B7D7001FFDA1 /* 2_Fire.caf */; };
@@ -27,7 +26,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		D1190B7E1CCAD37D00826D4C /* listener.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = listener.png; sourceTree = "<group>"; };
+		D1190B7E1CCAD37D00826D4C /* Listener.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Listener.png; sourceTree = "<group>"; };
 		D1190B7F1CCAD37D00826D4C /* Bear.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Bear.png; sourceTree = "<group>"; };
 		D1190B801CCAD37D00826D4C /* Fire.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Fire.png; sourceTree = "<group>"; };
 		D1190B811CCAD37D00826D4C /* Canteen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Canteen.png; sourceTree = "<group>"; };
@@ -36,7 +35,6 @@
 		D15532EA1CAE019500720173 /* oalPlayback.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = oalPlayback.swift; sourceTree = "<group>"; };
 		D15532EC1CAE01D700720173 /* MyOpenALSupport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyOpenALSupport.swift; sourceTree = "<group>"; };
 		D15532EE1CAE028200720173 /* NumTypes+Conversion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NumTypes+Conversion.swift"; sourceTree = "<group>"; };
-		D1A48C641CC9B7D7001FFDA1 /* 3_BearLow.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = 3_BearLow.caf; sourceTree = "<group>"; };
 		D1A48C651CC9B7D7001FFDA1 /* 3_BearMedium.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = 3_BearMedium.caf; sourceTree = "<group>"; };
 		D1A48C661CC9B7D7001FFDA1 /* 1_Chop.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = 1_Chop.caf; sourceTree = "<group>"; };
 		D1A48C671CC9B7D7001FFDA1 /* 2_Fire.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = 2_Fire.caf; sourceTree = "<group>"; };
@@ -62,7 +60,7 @@
 		D163F1C51CB8432400CF1D5C /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				D1190B7E1CCAD37D00826D4C /* listener.png */,
+				D1190B7E1CCAD37D00826D4C /* Listener.png */,
 				D1190B7F1CCAD37D00826D4C /* Bear.png */,
 				D1190B801CCAD37D00826D4C /* Fire.png */,
 				D1190B811CCAD37D00826D4C /* Canteen.png */,
@@ -75,7 +73,6 @@
 			isa = PBXGroup;
 			children = (
 				D1190B8A1CCAD9E700826D4C /* Background.mp3 */,
-				D1A48C641CC9B7D7001FFDA1 /* 3_BearLow.caf */,
 				D1A48C651CC9B7D7001FFDA1 /* 3_BearMedium.caf */,
 				D1A48C661CC9B7D7001FFDA1 /* 1_Chop.caf */,
 				D1A48C671CC9B7D7001FFDA1 /* 2_Fire.caf */,
@@ -148,7 +145,7 @@
 				TargetAttributes = {
 					D1D72B971C7D2E4E000C1FB4 = {
 						CreatedOnToolsVersion = 7.2;
-						DevelopmentTeam = FM435LD5UV;
+						DevelopmentTeam = W5CUU3Z3QK;
 					};
 				};
 			};
@@ -179,10 +176,9 @@
 				D1190B851CCAD37D00826D4C /* Fire.png in Resources */,
 				D1190B871CCAD37D00826D4C /* Axe.png in Resources */,
 				D1A48C6A1CC9B7D7001FFDA1 /* 3_BearMedium.caf in Resources */,
-				D1190B831CCAD37D00826D4C /* listener.png in Resources */,
+				D1190B831CCAD37D00826D4C /* Listener.png in Resources */,
 				D1A48C6B1CC9B7D7001FFDA1 /* 1_Chop.caf in Resources */,
 				D1A48C6D1CC9B7D7001FFDA1 /* 0_Water.caf in Resources */,
-				D1A48C691CC9B7D7001FFDA1 /* 3_BearLow.caf in Resources */,
 				D1190B861CCAD37D00826D4C /* Canteen.png in Resources */,
 				D1190B841CCAD37D00826D4C /* Bear.png in Resources */,
 				D1D72BA31C7D2E4E000C1FB4 /* Assets.xcassets in Resources */,
@@ -298,8 +294,9 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "iOS-Soundscape/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "Alt-G.iOS-Soundscape";
+				PRODUCT_BUNDLE_IDENTIFIER = "iOS-Soundscape";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
@@ -312,8 +309,9 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "iOS-Soundscape/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "Alt-G.iOS-Soundscape";
+				PRODUCT_BUNDLE_IDENTIFIER = "iOS-Soundscape";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};

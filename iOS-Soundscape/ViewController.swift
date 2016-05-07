@@ -4,7 +4,7 @@
 import UIKit
 import AVFoundation
 
-class ViewController: UIViewController {    
+class ViewController: UIViewController {
     
     // Init Multi Playback OpenAL Object
     var player = oalPlayback_MultiTest();
@@ -28,9 +28,17 @@ class ViewController: UIViewController {
     var background_file_URL = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("Background", ofType: "mp3")!)
     let background_volume: Float = 0.25
     
-    // Attempt to Set Width Height As Variable, creates typecast error.
-    // let view_width = UIScreen.mainScreen().bounds.size.width
-    // let view_height = UIScreen.mainScreen().bounds.size.height
+    // Overide UI Layout Orientation
+    override func shouldAutorotate() -> Bool {
+        if (UIDevice.currentDevice().orientation == UIDeviceOrientation.LandscapeLeft ||
+            UIDevice.currentDevice().orientation == UIDeviceOrientation.LandscapeRight ||
+            UIDevice.currentDevice().orientation == UIDeviceOrientation.Unknown) {
+                return false;
+        }
+        else {
+            return true;
+        }
+    }
     
 //------------------------------------------------------------------------------
 // Load View:
@@ -121,6 +129,7 @@ class ViewController: UIViewController {
         } catch {
             // couldn't load file
         }
+        
     }
     
 //------------------------------------------------------------------------------
@@ -234,6 +243,5 @@ class ViewController: UIViewController {
         
         animateLayer()
     }
-    
 }
 
